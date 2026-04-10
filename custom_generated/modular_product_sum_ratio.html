@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Product-Sum Ratio</title>
+    <!-- MathJax for rendering LaTeX expressions -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 2rem;
+        }
+        .problem-statement {
+            background-color: #fdf6e3;
+            padding: 1.5rem;
+            border-left: 4px solid #f39c12;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+        .twist-box {
+            background-color: #e8f4f8;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        code {
+            background-color: #f1f2f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9em;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Modular Product-Sum Ratio</h1>
+
+    <div class="problem-statement">
+        <p>Let \( f(n) \) be the number of pairs of integers \( (x, y) \) such that \( 1 \le x \le y \le n \) and the product \( xy \) is a multiple of the sum \( x+y \).</p>
+        
+        <p>For example, when \( n = 5 \), there are exactly \( 2 \) valid pairs:</p>
+        <ul>
+            <li>\( (2, 2) \), since \( 2 \times 2 = 4 \) is a multiple of \( 2 + 2 = 4 \).</li>
+            <li>\( (4, 4) \), since \( 4 \times 4 = 16 \) is a multiple of \( 4 + 4 = 8 \).</li>
+        </ul>
+        <p class="note">Note that \( (3, 6) \) is not valid since \( y \le 5 \) is required.</p>
+        
+        <p>You are also given that:</p>
+        <ul>
+            <li>\( f(10) = 6 \)</li>
+            <li>\( f(100) = 110 \)</li>
+            <li>\( f(1000) = 1569 \)</li>
+        </ul>
+        
+        <p><strong>Find \( f(10^8) \).</strong></p>
+    </div>
+
+    <h2>为什么这是一道典型的 Project Euler 题目？（解析与 Twist）</h2>
+
+    <p><strong>陷阱与暴力解法：</strong></p>
+    <p>这道题看似非常直白。简单的双层循环能非常快速地算出 \( f(1000) \)。但是，当 \( n=10^8 \) 时，暴力搜索的状态空间是 \( \sim 10^{16} \)，即使在最快的超算上也需要耗费大量时间，这是典型的 PE 门槛。</p>
+
+    <div class="twist-box">
+        <strong>第一个 Twist：同余转换 (Congruence Trick)</strong>
+        <p>我们要满足条件：</p>
+        <p style="text-align: center;">\( xy \equiv 0 \pmod{x+y} \)</p>
+        <p>我们可以令 \( k = x+y \)，此时 \( y = k - x \)。将其代入原式：</p>
+        <p style="text-align: center;">\( x(k-x) \equiv 0 \pmod k \implies kx - x^2 \equiv 0 \pmod k \)</p>
+        <p>因为 \( kx \) 显然是 \( k \) 的倍数，上式被极大地化简为了：</p>
+        <p style="text-align: center; font-weight: bold; font-size: 1.2em;">\( x^2 \equiv 0 \pmod k \)</p>
+        <p>这也是为什么条件里会有看似“非直觉”的组合出现。</p>
+    </div>
+
+    <div class="twist-box">
+        <strong>第二个 Twist：素因数限制与上下界 (Prime Factorization)</strong>
+        <p>现在我们需要求解 \( k | x^2 \)。</p>
+        <p>假设 \( k \) 的标准素数分解为 \( \prod p_i^{a_i} \)。为了让 \( k | x^2 \)，则 \( x \) 至少需要包含每个素数项的 \( \lceil a_i / 2 \rceil \) 次方。</p>
+        <p>定义一个核心函数 \( R(k) = \prod p_i^{\lceil a_i / 2 \rceil} \)（即能满足 \( k|x^2 \) 的 \( x \) 的<strong>最小根系数</strong>）。那么在固定 \( k \) 下，合法的 \( x \) 必然是 \( R(k) \) 的倍数！</p>
+        
+        <p>再来看看针对固定 \( k \)，对 \( x \) 的边界要求：</p>
+        <ul>
+            <li>依据原题 \( x \le y \) 且 \( x+y = k \)，这意味着 \( x \le \lfloor k/2 \rfloor \)。</li>
+            <li>同时 \( y \le n \implies k-x \le n \implies x \ge k - n \) 以及天然的 \( x \ge 1 \)。</li>
+        </ul>
+        <p>综上，对于每一个 \( k \in [2, 2n] \)，有效的 \( x \)（且是 \( R(k) \) 的倍数）数量仅仅是两个地板除相减：</p>
+        <p style="text-align: center; font-size: 1.2em;">
+            \( \text{count}(k) = \left\lfloor \frac{k/2}{R(k)} \right\rfloor - \left\lfloor \frac{\max(0, k - n - 1)}{R(k)} \right\rfloor \)
+        </p>
+    </div>
+
+    <h2>解法总结与复杂度</h2>
+    <p>通过这种数学变幻，问题从计算二维平面的 \( (x, y) \) 变成了仅需枚举一维的 \( k \in [1, 2n] \)。</p>
+    <p>我们只需要写一个时间复杂度为 \( O(N) \) 的<strong>欧拉线性筛 (Linear Sieve)</strong>，在筛素数的同时借助积性函数的性质高效求得所有 \( k \) 的最小根系数 \( R(k) \)，然后在两三秒内跑完 \( 2 \times 10^8 \) 个元素求和即可拿到答案。这刚好落在欧拉计划的前沿“适中难度区域”（难度评分约为 35% ~ 40%）。</p>
+
+    <p class="note"><strong>隐藏的更高阶玩法：</strong>如果把上限加大到 \( n=10^{13} \)，注意到 \( R(k) \) 实际上是一个纯粹的<strong>积性函数 (Multiplicative function)</strong>，这就为利用 <strong>Min-25 筛</strong> 或者 <strong>Dirichlet 卷积 (杜教筛)</strong> 达到次线性 \( O(N^{2/3}) \) 时间复杂度创造了条件，能将它变成一题 100% 难度的终极魔鬼题。</p>
+
+</div>
+
+</body>
+</html>

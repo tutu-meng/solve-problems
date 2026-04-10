@@ -1,0 +1,60 @@
+<!-- Paste this entire block into the "HTML view" of your Blogger editor -->
+
+<!-- MathJax Script for LaTeX rendering -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+    .pe-container {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 1rem 0;
+    }
+    .pe-container h2.pe-title {
+        color: #2c3e50;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.5rem;
+        margin-top: 0;
+    }
+    .pe-problem-statement {
+        background-color: #fdf6e3;
+        padding: 1.5rem;
+        border-left: 4px solid #f39c12;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+    .pe-note {
+        font-size: 0.9em;
+        color: #7f8c8d;
+        font-style: italic;
+    }
+</style>
+
+<div class="pe-container">
+    <h2 class="pe-title">Modular Product-Sum Ratio</h2>
+
+    <div class="pe-problem-statement">
+        <p>Let \( f(n) \) be the number of pairs of integers \( (x, y) \) such that \( 1 \le x \le y \le n \) and the product \( xy \) is a multiple of the sum \( x+y \).</p>
+        
+        <p>For example, when \( n = 5 \), there are exactly \( 2 \) valid pairs:</p>
+        <ul>
+            <li>\( (2, 2) \), since \( 2 \times 2 = 4 \) is a multiple of \( 2 + 2 = 4 \).</li>
+            <li>\( (4, 4) \), since \( 4 \times 4 = 16 \) is a multiple of \( 4 + 4 = 8 \).</li>
+        </ul>
+        <p class="pe-note">Note that \( (3, 6) \) is not valid since \( y \le 5 \) is required.</p>
+        
+        <p>You are also given that:</p>
+        <ul>
+            <li>\( f(10) = 6 \)</li>
+            <li>\( f(100) = 110 \)</li>
+            <li>\( f(1000) = 1569 \)</li>
+        </ul>
+        
+        <p><strong>Find \( f(10^8) \).</strong></p>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+# Build output from C++ and Python
+solve
+*.out
+*.o
+*.exe
+__pycache__/
+*.pyc
+
+# OS defaults
+.DS_Store
