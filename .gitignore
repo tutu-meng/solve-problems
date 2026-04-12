@@ -8,3 +8,6 @@ __pycache__/
 
 # OS defaults
 .DS_Store
+
+# Ignore answer.txt in any directory
+answer.txt
