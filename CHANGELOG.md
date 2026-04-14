@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Completed implementation for Project Euler 984: Knights and Horses.
-- Added `solve.py` containing a fast evaluation algorithm of the degree 11 linear recurrence.
+- Added `Gemini 3.1 Pro (High)/solve.py` containing a fast evaluation algorithm of the degree 11 linear recurrence.
 - Updated comprehensive documentation suite (`developer_guide.md`, `project_context.md`, `quick_reference.md`, `README.md`) detailing the mathematical insights, graph connectivity constraints, and FSM approach.
 - Included Mermaid diagrams in `README.md` to represent the DP FSM transitions and solution logic.
 

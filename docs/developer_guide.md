@@ -18,7 +18,7 @@ The core of the solution is based on the following insights:
 - **Fiduccia's Algorithm**: Used to compute $X^{10^{18}}$ modulo the characteristic polynomial of the recurrence relation.
 
 ## Code Structure
-- `984/solve.py`: The final, optimized solver script containing the precomputed recurrence coefficients and the $O(\log N)$ polynomial multiplication.
+- `984/Gemini 3.1 Pro (High)/solve.py`: The final, optimized solver script containing the precomputed recurrence coefficients and the $O(\log N)$ polynomial multiplication.
 
 ## Adding/Modifying
 When editing the recurrence or testing for smaller $N$, one should reconstruct the FSM in Python (as done in the development scripts) to re-evaluate the base cases.

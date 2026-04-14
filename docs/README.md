@@ -12,7 +12,7 @@ The problem asks for $N = 10^{18}$, which is computed using fast evaluation (Fid
 ## Usage
 Simply execute the main python program:
 ```sh
-python3 984/solve.py
+python3 "984/Gemini 3.1 Pro (High)/solve.py"
 ```
 
 ## Structure

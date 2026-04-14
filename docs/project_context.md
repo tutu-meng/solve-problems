@@ -11,7 +11,7 @@ The puzzle blends combinatorics, finite state machines, and algebraic recurrence
 The tension between these constraints means valid connected shapes cannot grow infinitely wide at a rapid pace, bounding the structure into a small finite state automaton of configurations over successive rows.
 
 ## Architecture
-The system is constructed with one primary execution script (`984/solve.py`) containing the end-result of our research:
+The system is constructed with one primary execution script (`984/Gemini 3.1 Pro (High)/solve.py`) containing the end-result of our research:
 - A linear recurrence of degree 11 that governs the sequence.
 - The initial 11 boundary cases of the sequence ($N=4$ to $14$).
 - A fast exponentiation algorithm that resolves $X^{N-15}$ modulo the characteristic polynomial.

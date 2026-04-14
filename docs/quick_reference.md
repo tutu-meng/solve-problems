@@ -13,7 +13,7 @@ $f(N)$ defines the number of knight-connected, horse-disjoint non-empty subsets 
 - $f(100) = 8658918531876 \equiv 348421318 \pmod{10^9+7}$
 
 ## Key Files
-- **`984/solve.py`**: Executes the mathematical recurrence solver for $N=10^{18}$.
+- **`984/Gemini 3.1 Pro (High)/solve.py`**: Executes the mathematical recurrence solver for $N=10^{18}$.
 
 ## Linear Recurrence
 The sequence $f(N)$ obeys a degree 11 characteristic equation for $N \ge 15$:
@@ -23,4 +23,4 @@ Coefficients $C_1 \dots C_{11}$:
 $[-7, 19, -21, -6, 42, -42, 6, 21, -19, 7, -1]$
 
 ## Execution
-Run `python3 984/solve.py` to print the final answer to stdout.
+Run `python3 "984/Gemini 3.1 Pro (High)/solve.py"` to print the final answer to stdout.
