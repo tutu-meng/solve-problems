@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- Completed implementation for Project Euler 996: Tennis Leader Board.
+- Added `996/GPT-5.5/solve.cpp` with a C++17 solver using balanced positive-run counting, DP, and modular interpolation.
+- Added problem-local documentation, question text, and final answer notes for Project Euler 996.
 - Added a project-local Cursor rule requiring problem-specific documentation to live in each numbered problem folder.
 - Added problem-local documentation files for Project Euler 994 and 995.
 - Completed implementation for Project Euler 995: Divisor Residues.
