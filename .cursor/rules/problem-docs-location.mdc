@@ -1,0 +1,13 @@
+---
+description: Store problem documentation inside each problem folder
+alwaysApply: true
+---
+
+# Problem Documentation Location
+
+For this repository, put documentation for each Project Euler problem in that problem's folder instead of the top-level `docs/` folder.
+
+- Prefer `NNN/README.md` or another problem-local markdown file such as `NNN/notes.md`.
+- Keep diagrams, derivations, verification notes, and final-answer explanations with the problem implementation.
+- Do not update the shared `docs/` files for new problem-specific work unless the user explicitly asks.
+- This project-local rule overrides broader user guidance that says to keep problem documentation in `docs/`.
